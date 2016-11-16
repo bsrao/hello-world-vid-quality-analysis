@@ -367,7 +367,7 @@ didFailWithError:(OTError*)error
     
     [self  performSelector:@selector(disconnectSession)
                 withObject:nil
-                afterDelay:100];
+                afterDelay: (5 * 60)];
     
     printf("Test Name : %s\n",[testName UTF8String]);
     printf("video_bw(kbps),audio_bw(kbps),video_pl,audio_pl,user_rating\n");
