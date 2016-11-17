@@ -96,7 +96,7 @@ static bool subscribeToSelf = NO;
     starRatingView = [HCSStarRatingView new];;
     starRatingView.maximumValue = 5;
     starRatingView.minimumValue = 0;
-    starRatingView.value = 0;
+    starRatingView.value = 5; // start with rating "excellent"
     starRatingView.tintColor = [UIColor redColor];
     starRatingView.allowsHalfStars = YES;
     CGRect frame = starRatingView.frame;
@@ -191,7 +191,7 @@ UIAlertController * alert=   [UIAlertController
     audio_bw = 0;
     video_pl_ratio = -1;
     audio_pl_ratio = -1;
-    currentRating = -1;
+    currentRating = 0.0; //
     
     OTError *error = nil;
     _session = [[OTSession alloc] initWithApiKey:kApiKey
@@ -639,8 +639,8 @@ audioNetworkStatsUpdated:(OTSubscriberKitAudioNetworkStats*)stats
         prevAudioPacketsLost = audioStats.audioPacketsLost;
         prevAudioPacketsRcvd = audioStats.audioPacketsReceived;
     }
-    if (!(currentRating == -1 && starRatingView.value == 0))
-        currentRating = starRatingView.value;
+    
+    currentRating = starRatingView.value;
 }
 
 @end
